@@ -18,7 +18,6 @@ handlers:
 #new handlers should go ABOVE the catch all url (.*)
 - url: .*
   script: main.app
-  #requires all users to login with google login api
   login: required
 
 

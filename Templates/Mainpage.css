@@ -1,3 +1,10 @@
+#top {
+  height: 120px;
+  padding: 8px;
+  text-align: center;
+	background-color: #f1e3dd;
+}
+
 h1 {
 	font-family: Cambria;
 	font-weight: bold;
