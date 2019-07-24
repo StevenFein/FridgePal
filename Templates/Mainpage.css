@@ -1,4 +1,4 @@
-#top {
+/* #top {
   height: 120px;
   padding: 8px;
   text-align: center;
@@ -11,4 +11,16 @@ h1 {
 	font-style: italic;
 	font-size: 4em;
   color: #667292
+} */
+
+.title {
+	background-color: #f1e3dd;
+	color: #667292;
+	font-family: Cambria;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 4em;
+	height: 120px;
+  padding: 8px;
+  text-align: center;
 }
