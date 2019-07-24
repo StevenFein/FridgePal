@@ -1,7 +1,26 @@
+/* #top {
+  height: 120px;
+  padding: 8px;
+  text-align: center;
+	background-color: #f1e3dd;
+}
+
 h1 {
 	font-family: Cambria;
 	font-weight: bold;
 	font-style: italic;
 	font-size: 4em;
   color: #667292
+} */
+
+.title {
+	background-color: #f1e3dd;
+	color: #667292;
+	font-family: Cambria;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 4em;
+	height: 120px;
+  padding: 8px;
+  text-align: center;
 }
