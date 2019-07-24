@@ -15,6 +15,10 @@ handlers:
 - url: /my-images
   static_dir: my-images
 
+#added this to connect to inputpage
+- url: /html
+  static_dir: html
+
 #new handlers should go ABOVE the catch all url (.*)
 - url: .*
   script: main.app
