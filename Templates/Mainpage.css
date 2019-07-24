@@ -14,8 +14,8 @@ h1 {
 } */
 
 .title {
-	background-color: #f1e3dd;
-	color: #667292;
+	background-color: #cfe0e8;
+	color: #4040a1;
 	font-family: Cambria;
 	font-weight: bold;
 	font-style: italic;
@@ -23,4 +23,49 @@ h1 {
 	height: 120px;
   padding: 8px;
   text-align: center;
+}
+
+#main {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+	justify-content: space-evenly;
+}
+
+
+.input {
+	height: 200px;
+	width: 200px;
+	font-size: 2em;
+	font-family: Cambria;
+}
+
+.contents {
+	height: 200px;
+	width: 200px;
+	font-size: 2em;
+	font-family: Cambria;
+}
+
+.recipes {
+	height: 200px;
+	width: 200px;
+	font-size: 2em;
+	font-family: Cambria;
+}
+
+#space {
+	padding: 20px;
+}
+
+#spacewithcolor {
+	padding: 8px;
+	background-color: #4040a1;
+}
+
+#body {
+	flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+	flex-direction: column;
 }
