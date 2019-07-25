@@ -1,9 +1,12 @@
 import webapp2
 import os
 import jinja2
+import time
 from models import Food
 import datetime
 from google.appengine.api import users
+from google.appengine.ext import ndb
+
 
 
 #remember, you can get this by searching for jinja2 google app engine
@@ -43,11 +46,21 @@ class InventoryPage(webapp2.RequestHandler):
         dict_for_template = {'all_user_foods': user_foods}
         self.response.write(food_template.render(dict_for_template))
 
+
+
+
 class RecipePage(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("templates/Recipes.html")
         self.response.write(start_template.render())
 
+class DeleteHandler(webapp2.RequestHandler):
+    def post(self):
+        food_id = self.request.get('food_id')
+        food_key = ndb.Key(urlsafe = food_id)
+        food_key.delete()
+        time.sleep(0.1)
+        self.redirect('/inventory')
 #
 #   def post(self):
 #         user = users.get_current_user()
@@ -99,5 +112,6 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/input', InputPage),
     ('/inventory', InventoryPage),
-    ('/recipes', RecipePage)
+    ('/recipes', RecipePage),
+    ('/delete', DeleteHandler),
 ], debug=True)
