@@ -10,11 +10,15 @@
     <div id="body">
       <div id="spacewithcolor"></div>
       <div id="morespace"></div>
-      <!-- <h2>Expiration Date</h2> -->
-      <form action="/input" method="POST">
-        Expiration Date:
-        <input type="date" name="starttime">
-        <input type="submit" value="Submit">
-      </form>
+      <div id="userinputs">
+        <!-- <h2>Expiration Date</h2> -->
+        <form action="/input" method="POST">
+          <strong>Input Food</strong>
+          <input type="text" name="addfooditem" id="fooditeminput" value="{{addfooditem}}"/> <br />
+          <strong>Expiration Date</strong>
+          <input type="date" name="expirationdate">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
     </body>
 </html>

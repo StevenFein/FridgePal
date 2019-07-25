@@ -2,8 +2,9 @@ import webapp2
 import os
 import jinja2
 from models import Food
-from datetime import datetime
-from datetime import timedelta
+import datetime
+from google.appengine.api import users
+
 
 #remember, you can get this by searching for jinja2 google app engine
 jinja_current_dir = jinja2.Environment(
@@ -21,20 +22,19 @@ class InputPage(webapp2.RequestHandler):
         start_template = jinja_current_dir.get_template("templates/InputPage.html")
         self.response.write(start_template.render())
     def post(self):
-        start_string = self.request.get('starttime')
-        start_date = datetime.strptime(start_string, "%Y-%m-%d")
+        expiration_string = self.request.get('expirationdate')
+        expiration_date = datetime.datetime.strptime(expiration_string, "%Y-%m-%d").date()
 
         # calendar_url = "http://www.google.com/calendar/event?action=TEMPLATE&text=%s&dates=%s/%s"
         # calendar_link = calendar_url % ("TestEvent", 7, 12) #calendar_start, calendar_end)
         # calendar_html = "<HTML><BODY><A href='%s' target='_blank'>Test Event Link</A></BODY></HTML>"
         # self.response.write(calendar_html % calendar_link)
-            user = users.get_current_user()
-            food_input = self.request.get('user_food_input')
-
+        user = users.get_current_user()
+        food_input = self.request.get('addfooditem')
             #put into database (optional)
-            food_record = Food(food_name = food_input)
-            food_record.user_id = user.user_id()
-            food_record.put()
+        food_record = Food(food_name = food_input, user_id = user.user_id(), expiration_date = expiration_date)
+        food_record.put()
+        self.redirect('/input')
 
 class InventoryPage(webapp2.RequestHandler):
     def get(self):
