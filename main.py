@@ -20,6 +20,18 @@ class InputPage(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("templates/InputPage.html")
         self.response.write(start_template.render())
+
+        # start_string = self.request.get('starttime')
+        # start_date = datetime.strptime(start_string, "%m/%d/%Y")
+        #
+        # calendar_url = "http://www.google.com/calendar/event?action=TEMPLATE&text=%s&dates=%s/%s"
+        #
+        # calendar_link = calendar_url % ("TestEvent", calendar_start, calendar_end)
+        # calendar_html = "<HTML><BODY><A href='%s' target='_blank'>Test Event Link</A></BODY></HTML>"
+        # self.response.write(calendar_html % calendar_link)
+
+
+
 #
 #     def post(self):
 #         user = users.get_current_user()
