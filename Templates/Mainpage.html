@@ -11,11 +11,20 @@
       <div id="spacewithcolor"></div>
       <div id="space"></div>
       <div id="main">
-        <button class="input">Input Page</button>
-        <button class="contents">Refrigerator Contents</button>
+        <a href="/input"><button class="input" id="inputbutton">Input Page</button></a>
+        <a href="/inventory"><button class="contents">Refrigerator Contents</button></a>
       </div>
       <div id="morebuttons">
-        <center><button class="recipes">Possible Recipes</button></center>
+        <a href="/recipes"><center><button class="recipes">Possible Recipes</button></center></a>
       </body>
     </div>
 </html>
+
+
+
+<!--
+<script type="text/javascript">
+    document.getElementById("input").onclick = function () {
+        location.href = "/input";
+    };
+</script> -->
