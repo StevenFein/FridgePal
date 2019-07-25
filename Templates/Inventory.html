@@ -5,17 +5,27 @@
     <link type="text/css" rel="stylesheet" href="/css/Inventory.css">
   </head>
   <body>
+
+
     <div id="top"></div>
       <div class="content-item title">Refrigerator Inventory</div>
     <div id="body">
       <div id="spacewithcolor"></div>
-    <h1>Your Food Items</h1>
-    {% for food in all_user_foods %}
-      <p>{{food.food_name}}</p>
-    {% endfor %}
-    <h1>Expiration Dates</h1>
-    {% for food in all_user_foods %}
-      <p>{{food.expiration_date}}</p>
-    {% endfor %}
+    <table style="width:100%">
+    <tr>
+        <th>Your Food Items</th>
+        <th>Expiration Dates</th>
+    </tr>
+    <tr>
+      <td>{% for food in all_user_foods %}
+
+          <center>{{food.food_name}}</center>
+
+      {% endfor %}</td>
+      <td>{% for food in all_user_foods %}
+        <center>{{food.expiration_date}}</center>
+      {% endfor %}</td>
+    </tr>
+  </table>
   </body>
 </html>
