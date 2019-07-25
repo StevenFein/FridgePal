@@ -9,8 +9,8 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /app-stylesheets
-  static_dir: app-stylesheets
+- url: /css
+  static_dir: css
 
 - url: /my-images
   static_dir: my-images
