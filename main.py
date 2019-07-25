@@ -38,8 +38,10 @@ class InputPage(webapp2.RequestHandler):
 
 class InventoryPage(webapp2.RequestHandler):
     def get(self):
-        start_template = jinja_current_dir.get_template("templates/Inventory.html")
-        self.response.write(start_template.render())
+        food_template = jinja_current_dir.get_template("templates/Inventory.html")
+        user_foods = Food.query().order(Food.expiration_date).fetch()
+        dict_for_template = {'all_user_foods': user_foods}
+        self.response.write(food_template.render(dict_for_template))
 
 class RecipePage(webapp2.RequestHandler):
     def get(self):
