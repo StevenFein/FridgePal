@@ -11,7 +11,7 @@ jinja_current_dir = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-class Mainpage(webapp2.RequestHandler):
+class MainPage(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("templates/MainPage.html")
         self.response.write(start_template.render())
@@ -34,6 +34,15 @@ class InputPage(webapp2.RequestHandler):
 # reminder vs calendar; didnt upload to github
 
 
+class InventoryPage(webapp2.RequestHandler):
+    def get(self):
+        start_template = jinja_current_dir.get_template("templates/Inventory.html")
+        self.response.write(start_template.render())
+
+class RecipePage(webapp2.RequestHandler):
+    def get(self):
+        start_template = jinja_current_dir.get_template("templates/Recipes.html")
+        self.response.write(start_template.render())
 
 #
 #     def post(self):
@@ -68,8 +77,8 @@ class InputPage(webapp2.RequestHandler):
 # ], debug=True)
 # #
 app = webapp2.WSGIApplication([
-    ('/', Mainpage),
+    ('/', MainPage),
     ('/input', InputPage),
-    # ('/inventory', InventoryPage),
-    # ('/recipes', RecipePage)
+    ('/inventory', InventoryPage),
+    ('/recipes', RecipePage)
 ], debug=True)
