@@ -20,7 +20,6 @@ class InputPage(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("templates/InputPage.html")
         self.response.write(start_template.render())
-
     def post(self):
         start_string = self.request.get('starttime')
         start_date = datetime.strptime(start_string, "%Y-%m-%d")
@@ -29,6 +28,13 @@ class InputPage(webapp2.RequestHandler):
         # calendar_link = calendar_url % ("TestEvent", 7, 12) #calendar_start, calendar_end)
         # calendar_html = "<HTML><BODY><A href='%s' target='_blank'>Test Event Link</A></BODY></HTML>"
         # self.response.write(calendar_html % calendar_link)
+            user = users.get_current_user()
+            food_input = self.request.get('user_food_input')
+
+            #put into database (optional)
+            food_record = Food(food_name = food_input)
+            food_record.user_id = user.user_id()
+            food_record.put()
 
 class InventoryPage(webapp2.RequestHandler):
     def get(self):
@@ -41,6 +47,21 @@ class RecipePage(webapp2.RequestHandler):
         self.response.write(start_template.render())
 
 #
+#   def post(self):
+#         user = users.get_current_user()
+#         food_input = self.request.get('user_food_input')
+#
+#         #put into database (optional)
+#         food_record = Food(food_name = food_input)
+#         food_record.user_id = user.user_id()
+#         food_record.put()
+#
+#         #pass to the template via a dictionary
+#         variable_dict = {'fav_food_for_view': the_fav_food}
+#         end_template = jinja_current_dir.get_template("templates/results.html")
+#         self.response.write(end_template.render(variable_dict))
+
+
 #     def post(self):
 #         user = users.get_current_user()
 #         the_fav_food = self.request.get('user-fav-food')
