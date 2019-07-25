@@ -17,6 +17,7 @@ jinja_current_dir = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
+
         start_template = jinja_current_dir.get_template("templates/MainPage.html")
         self.response.write(start_template.render())
 
@@ -51,6 +52,7 @@ class InventoryPage(webapp2.RequestHandler):
 
 class RecipePage(webapp2.RequestHandler):
     def get(self):
+        print(os.environ.get("FOOD_API_KEY"))
         start_template = jinja_current_dir.get_template("templates/Recipes.html")
         self.response.write(start_template.render())
 
