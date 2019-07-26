@@ -8,6 +8,7 @@ import datetime
 from google.appengine.api import users
 from google.appengine.ext import ndb
 from google.appengine.api import urlfetch
+import json
 
 
 
@@ -68,15 +69,15 @@ class RecipePage(webapp2.RequestHandler):
         # recipe = Recipe.query().fetch()
         # self.response.write(start_template.render(recipe))
         url = 'https://api.spoonacular.com/recipes/findByIngredients?%s' % (urllib.urlencode(query_params))
-        self.response.write(url)
-        # try:
-        #     result = urlfetch.fetch(url)
-        #     if result.status_code == 200:
-        #         self.response.write(result.content)
-        #     else:
-        #         self.response.status_int = result.status_code
-        # except urlfetch.Error:
-        #     logging.exception('Caught exception fetching url')
+        # self.response.write(url)
+        try:
+            result = urlfetch.fetch(url)
+            if result.status_code == 200:
+                self.response.write(result.content)
+            else:
+                self.response.status_int = result.status_code
+        except urlfetch.Error:
+            logging.exception('Caught exception fetching url')
 
 
 class DeleteHandler(webapp2.RequestHandler):
