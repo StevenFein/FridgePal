@@ -1,5 +1,6 @@
 import webapp2
 import os
+import urllib
 import jinja2
 import time
 from models import Food, Recipe
@@ -56,18 +57,27 @@ class RecipePage(webapp2.RequestHandler):
         print(os.environ.get("FOOD_API_KEY"))
         start_template = jinja_current_dir.get_template("templates/Recipes.html")
         self.response.write(start_template.render())
+        user_foods = Food.query().order(Food.expiration_date).fetch()
+        user_food_names = ",".join([ food.food_name for food in user_foods ])
+        query_params = {
+            'ingredients': user_food_names,
+            'apiKey': os.environ.get("FOOD_API_KEY"),
+        }
+
         #not totally sure
         # recipe = Recipe.query().fetch()
         # self.response.write(start_template.render(recipe))
-        url = 'https://api.spoonacular.com/recipes/search'
-        try:
-            result = urlfetch.fetch(url)
-            if result.status_code == 200:
-                self.response.write(result.content)
-            else:
-                self.response.status_int = result.status_code
-        except urlfetch.Error:
-            logging.exception('Caught exception fetching url')
+        url = 'https://api.spoonacular.com/recipes/findByIngredients?%s' % (urllib.urlencode(query_params))
+        self.response.write(url)
+        # try:
+        #     result = urlfetch.fetch(url)
+        #     if result.status_code == 200:
+        #         self.response.write(result.content)
+        #     else:
+        #         self.response.status_int = result.status_code
+        # except urlfetch.Error:
+        #     logging.exception('Caught exception fetching url')
+
 
 class DeleteHandler(webapp2.RequestHandler):
     def post(self):
