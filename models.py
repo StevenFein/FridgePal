@@ -22,3 +22,8 @@ class Food(ndb.Model):
     food_name = ndb.StringProperty(required=True)
     expiration_date = ndb.DateProperty(required=True)
     user_id = ndb.StringProperty(required=True)
+
+#not totally sure
+class Recipe(ndb.Model):
+    recipe_title = ndb.StringProperty(required=True)
+    recipe_ingredients = ndb.StringProperty(required=True)
