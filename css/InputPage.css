@@ -27,3 +27,19 @@
 	padding: 35px;
 	background-color: #b2b2b2;
 }
+
+div.a {
+	font-size: 20px;
+}
+
+#textboxid{
+	height:30px;
+	font-size:14pt;
+}
+
+#button:hover {
+  background-color: #CC1820;
+  color: white;
+	font-size: 16px;
+
+}
