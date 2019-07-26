@@ -9,6 +9,11 @@
       <div class="content-item title">Possible Recipes</div>
     <div id="body">
       <div id="spacewithcolor"></div>
+      {% for recipe in recipes %}
+          {{recipe["title"]}}<br>
+          <img src="{{recipe['image']}}"><br>
+      {% endfor %}
     <a href="/"><button class="main" id="backbutton">Back to Main Page</button></a>
+    </div>
       </body>
 </html>

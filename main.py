@@ -57,7 +57,6 @@ class RecipePage(webapp2.RequestHandler):
     def get(self):
         print(os.environ.get("FOOD_API_KEY"))
         start_template = jinja_current_dir.get_template("templates/Recipes.html")
-        self.response.write(start_template.render())
         user_foods = Food.query().order(Food.expiration_date).fetch()
         user_food_names = ",".join([ food.food_name for food in user_foods ])
         query_params = {
@@ -73,11 +72,15 @@ class RecipePage(webapp2.RequestHandler):
         try:
             result = urlfetch.fetch(url)
             if result.status_code == 200:
-                self.response.write(result.content)
+                result_data = json.loads(result.content)
             else:
+                result_data = []
                 self.response.status_int = result.status_code
         except urlfetch.Error:
             logging.exception('Caught exception fetching url')
+        self.response.write(start_template.render(
+            {"recipes": result_data}
+        ))
 
 
 class DeleteHandler(webapp2.RequestHandler):
