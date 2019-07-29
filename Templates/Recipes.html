@@ -10,8 +10,8 @@
     <div id="body">
       <div id="spacewithcolor"></div>
       {% for recipe in recipes %}
-          {{recipe["title"]}}<br>
-          <img src="{{recipe['image']}}"><br>
+          <a href="/recipe_redirect?id={{recipe['id']}}">{{recipe["title"]}}<br>
+          <img src="{{recipe['image']}}"></a><br>
       {% endfor %}
     <a href="/"><button class="main" id="backbutton">Back to Main Page</button></a>
     </div>
