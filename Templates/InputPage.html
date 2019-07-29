@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title-Input Page</title>
+    <title>Fridge Pal-Input Page</title>
     <link type="text/css" rel="stylesheet" href="/css/InputPage.css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="top"></div>
@@ -13,13 +14,11 @@
       <div id="userinputs">
         <!-- <h2>Expiration Date</h2> -->
         <center><form action="/input" method="POST">
-        <div class = 'a'>
-        <strong>Input Food</strong>
-          <input id = textboxid type="text" name="addfooditem" id="fooditeminput" value="{{addfooditem}}" /> <br />
+          <strong>Input Food</strong>
+          <input type="text" name="addfooditem" id="fooditeminput" value="{{addfooditem}}"/> <br />
           <strong>Expiration Date</strong>
-          <input id = textboxid type="date" name="expirationdate">
-        </div>
-          <div> <input id = "button" type="submit" value="Submit"></div>
+          <input type="date" name="expirationdate">
+          <input type="submit" value="Submit">
         </form></center>
       </div>
       <a href="/"><button class="main" id="backbutton">Back to Main Page</button></a>
