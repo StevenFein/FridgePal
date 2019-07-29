@@ -3,7 +3,7 @@ import os
 import urllib
 import jinja2
 import time
-from models import Food, Recipe
+from models import Food, Recipe, RecipeCache
 import datetime
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -91,6 +91,36 @@ class DeleteHandler(webapp2.RequestHandler):
         time.sleep(0.1)
         self.redirect('/inventory')
 
+class RecipeRedirect(webapp2.RequestHandler):
+    def get(self):
+        recipe_id = self.request.get('id')
+        recipe = RecipeCache.query().filter(RecipeCache.spoonacular_id==recipe_id).get()
+        if not recipe:
+            query_params = {
+                'apiKey': os.environ.get("FOOD_API_KEY"),
+            }
+            url = 'https://api.spoonacular.com/recipes/%s/information?%s' % (recipe_id,urllib.urlencode(query_params))
+            # self.response.write(url)
+            try:
+                result = urlfetch.fetch(url)
+                if result.status_code == 200:
+                    result_data = json.loads(result.content)
+                else:
+                    result_data = None
+                    self.response.status_int = result.status_code
+            except urlfetch.Error:
+                logging.exception('Caught exception fetching url')
+
+            if result_data:
+                recipe = RecipeCache(spoonacular_id=recipe_id, link=result_data['sourceUrl'])
+                recipe.put()
+            else:
+                self.response.status = "404 Recipe Not Found"
+                return
+        self.redirect(recipe.link.encode("utf-8"))
+
+
+
 #
 #   def post(self):
 #         user = users.get_current_user()
@@ -144,4 +174,5 @@ app = webapp2.WSGIApplication([
     ('/inventory', InventoryPage),
     ('/recipes', RecipePage),
     ('/delete', DeleteHandler),
+    ('/recipe_redirect',RecipeRedirect),
 ], debug=True)

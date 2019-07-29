@@ -16,7 +16,10 @@
 
 from google.appengine.ext import ndb
 
-
+class RecipeCache(ndb.Model):
+    spoonacular_id = ndb.StringProperty(required=True)
+    link = ndb.StringProperty(required=True)
+    
 
 class Food(ndb.Model):
     food_name = ndb.StringProperty(required=True)
