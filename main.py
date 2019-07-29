@@ -21,7 +21,7 @@ jinja_current_dir = jinja2.Environment(
 class Mainpage(webapp2.RequestHandler):
     def get(self):
 
-        start_template = jinja_current_dir.get_template("templates/MainPage.html")
+        start_template = jinja_current_dir.get_template("templates/Mainpage.html")
         self.response.write(start_template.render())
 
 class InputPage(webapp2.RequestHandler):
@@ -43,7 +43,7 @@ class InputPage(webapp2.RequestHandler):
         food_record.put()
         self.redirect('/input')
 
-class InventoryPage(webapp2.RequestHandler):
+class Inventory(webapp2.RequestHandler):
     def get(self):
         food_template = jinja_current_dir.get_template("templates/Inventory.html")
         user_foods = Food.query().order(Food.expiration_date).fetch()
@@ -53,7 +53,7 @@ class InventoryPage(webapp2.RequestHandler):
 
 
 
-class RecipePage(webapp2.RequestHandler):
+class Recipes(webapp2.RequestHandler):
     def get(self):
         print(os.environ.get("FOOD_API_KEY"))
         start_template = jinja_current_dir.get_template("templates/Recipes.html")
@@ -171,8 +171,8 @@ class RecipeRedirect(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', Mainpage),
     ('/input', InputPage),
-    ('/inventory', InventoryPage),
-    ('/recipes', RecipePage),
+    ('/inventory', Inventory),
+    ('/recipes', Recipes),
     ('/delete', DeleteHandler),
     ('/recipe_redirect',RecipeRedirect),
 ], debug=True)
