@@ -1,7 +1,7 @@
 .title {
 	background-color: #cfe0e8;
 	color: #4040a1;
-	font-family: Cambria;
+	font-family: 'Bungee Inline', cursive;
 	font-weight: bold;
 	font-style: italic;
 	font-size: 4em;
@@ -12,7 +12,7 @@
 }
 
 #body {
-	background-color: #b2b2b2;
+	background-color: ;
 }
 
 #space {
@@ -21,7 +21,7 @@
 
 #spacewithcolor {
 	padding: 8px;
-	background-color: #4040a1;
+	background-color: ;
 }
 
 .btn {
