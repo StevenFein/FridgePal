@@ -1,9 +1,9 @@
 .title {
 	background-color: #cfe0e8;
 	color: #4040a1;
-	font-family: Cambria;
-	font-weight: bold;
-	font-style: italic;
+	font-family: 'Bungee Inline', cursive;
+	/* font-weight: bold; */
+	/* font-style: italic; */
 	font-size: 4em;
 	height: 120px;
   padding: 8px;
@@ -19,40 +19,23 @@
 }
 
 
-.input {
+.navbutton {
 	height: 200px;
 	width: 200px;
 	font-size: 2em;
-	font-family: Cambria;
-	color: #92a8d1;
+	font-family: sans-serif;
+	color: MidnightBlue;
 	margin-right: 20px;
-}
-
-.contents {
-	height: 200px;
-	width: 200px;
-	font-size: 2em;
-	font-family: Cambria;
-	color: #92a8d1;
-	margin-left: 20px;
-}
-
-.recipes {
-	height: 200px;
-	width: 200px;
-	font-size: 2em;
-	font-family: Cambria;
-	color: #92a8d1;
 }
 
 #space {
 	padding: 20px;
 }
 
-#spacewithcolor {
+/* #spacewithcolor {
 	padding: 8px;
 	background-color: #4040a1;
-}
+} */
 
 #evenmorespaceforbackground {
 	padding: 55px;
@@ -71,7 +54,7 @@
 
 button {
 	margin: 20px;
-	border: 4px solid darkgreen;
-	background-color: white;
+	border: 4px solid #4040a1;
+	background-color: AliceBlue;
 	font-weight: bold;
 }

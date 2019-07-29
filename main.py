@@ -18,7 +18,7 @@ jinja_current_dir = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-class MainPage(webapp2.RequestHandler):
+class Mainpage(webapp2.RequestHandler):
     def get(self):
 
         start_template = jinja_current_dir.get_template("templates/MainPage.html")
@@ -169,7 +169,7 @@ class RecipeRedirect(webapp2.RequestHandler):
 # ], debug=True)
 # #
 app = webapp2.WSGIApplication([
-    ('/', MainPage),
+    ('/', Mainpage),
     ('/input', InputPage),
     ('/inventory', InventoryPage),
     ('/recipes', RecipePage),
